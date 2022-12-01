@@ -6,13 +6,12 @@ using namespace std;
 int partitionAndSortFiles(fstream& inputFile, int runSize) {
 	cout << "Bat dau sap xep file\n";
 	int numRunWays = 0;
-	string* arr = new string[runSize];
 	bool moreInput = true;
 	string temp;
 	getline(inputFile, temp);
 	while (moreInput && inputFile.good())
 	{
-
+		string* arr = new string[runSize];
 		int i = 0;
 		for (; i < runSize; i++)
 		{
@@ -39,10 +38,10 @@ int partitionAndSortFiles(fstream& inputFile, int runSize) {
 		f.close();
 		if (numRunWays % 1000 == 0) cout << "Da ghi duoc " << numRunWays << " file\n";
 		numRunWays++;
+		delete[] arr;
 	}
 
 	inputFile.close();
-	delete[] arr;
 	return numRunWays;
 }
 
