@@ -1,32 +1,31 @@
 #pragma once
 #include <vector>
 #include <string>
-using namespace std;
-
-string getId(string str);
+#include "StringUtil.h"
 
 struct MinHeapNode {
-	string record;
+	std::string record;
 	int index;
-	string key;
+	std::string key;
 	MinHeapNode() {
 		record = "";
 	}
-	MinHeapNode(string r, int i) {
+	MinHeapNode(std::string r, int i) {
 		record = r;
 		index = i;
-		key = getId(r);
+		key = getFirstToken(r);
+	}
+	bool operator<(const MinHeapNode& n) {
+		return this->key < n.key;
 	}
 };
 
 class MinHeap
 {
-	vector<MinHeapNode> heap;
+private:
+	std::vector<MinHeapNode> heap;
 	int size;
 	void swap(MinHeapNode& x, MinHeapNode& y);
-public:
-	MinHeap(vector<MinHeapNode>& nodeList);
-	void heapify(int i);
 	int getParent(int i) {
 		return (i - 1) / 2;
 	}
@@ -36,15 +35,12 @@ public:
 	int getRightChild(int i) {
 		return 2 * i + 2;
 	}
-	MinHeapNode getMin() {
-		return heap[0];
-	}
-	MinHeapNode getMax() {
-		return heap[size - 1];
-	}
+public:
+	MinHeap(std::vector<MinHeapNode>& nodeList);
+	MinHeapNode pop();
+	void push(MinHeapNode nNode);
+	void heapify(int i);
 	bool isEmpty() {
 		return size == 0;
 	}
-	MinHeapNode pop();
-	void push(MinHeapNode nNode);
 };

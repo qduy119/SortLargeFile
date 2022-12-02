@@ -7,25 +7,9 @@ void MinHeap::swap(MinHeapNode& x, MinHeapNode& y)
 	y = temp;
 }
 
-
-string getId(string str) {
-	int n = (int)str.size();
-	string temp = "";
-	for (int i = 0; i < n; i++) {
-		if (str[i] != ',') {
-			temp += str[i];
-
-		}
-		else {
-			break;
-		}
-	}
-	return temp;
-}
-
-MinHeap::MinHeap(vector<MinHeapNode>& nodeList)
+MinHeap::MinHeap(std::vector<MinHeapNode>& nodeList)
 {
-	size = nodeList.size();
+	size = (int)nodeList.size();
 	heap = nodeList;
 	int i = (size - 1) / 2;
 	for (; i >= 0; i--)
@@ -56,7 +40,7 @@ void MinHeap::push(MinHeapNode nNode) {
 	int i = size;
 	heap.push_back(nNode);
 	size++;
-	while (i != 0 && heap[i].key < heap[getParent(i)].key)
+	while (i != 0 && heap[i] < heap[getParent(i)])
 	{
 		swap(heap[i], heap[getParent(i)]);
 		i = getParent(i);
@@ -68,10 +52,10 @@ void MinHeap::heapify(int i) {
 	int right = getRightChild(i);
 	int smallest = i;
 
-	if (left < size && heap[left].key < heap[smallest].key)
+	if (left < size && heap[left] < heap[smallest])
 		smallest = left;
 
-	if (right < size && heap[right].key < heap[smallest].key)
+	if (right < size && heap[right] < heap[smallest])
 		smallest = right;
 
 	if (smallest != i) {
