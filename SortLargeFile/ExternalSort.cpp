@@ -51,8 +51,7 @@ void ExternalSort::externalSort(std::string inputFileName, std::string outputFil
 int ExternalSort::partitionAndSortFiles(std::fstream& inputFile) {
 	int numRunWays = 0;
 	bool moreInput = true;
-	std::string temp;
-	getline(inputFile, temp);
+	getline(inputFile, header);
 	while (moreInput && inputFile.good())
 	{
 		std::string * arr = new std::string[runSize];
@@ -108,7 +107,7 @@ void ExternalSort::mergeFiles(std::string outputFileName, int numRunWays) {
 	}
 
 	MinHeap minHeap(nodeList);
-
+	outputFile << header << std::endl;
 	while (!minHeap.isEmpty())
 	{
 		MinHeapNode minNode = minHeap.pop();
