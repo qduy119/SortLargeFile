@@ -1,4 +1,4 @@
-﻿  ExternalSort.cpp
-  main.cpp
-  Generating Code...
-  SortLargeFile.vcxproj -> C:\Users\Home\OneDrive\Máy tính\DSA External Sort GK\SortLargeFile\x64\Debug\SortLargeFile.exe
+﻿  main.cpp
+C:\Users\Home\OneDrive\Hình ảnh\fdgdfg\SortLargeFile\SortLargeFile\main.cpp(13,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Home\OneDrive\Hình ảnh\fdgdfg\SortLargeFile\SortLargeFile\main.cpp(14,13): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  SortLargeFile.vcxproj -> C:\Users\Home\OneDrive\Hình ảnh\fdgdfg\SortLargeFile\x64\Debug\SortLargeFile.exe
